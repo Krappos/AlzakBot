@@ -4,8 +4,15 @@ import discord
 from discord.ext import commands
 import asyncio
 import datetime
+from dotenv import load_dotenv
+import os
+
+
+load_dotenv()
+
 
 #variables
+DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 x=datetime.datetime.now()
 intents = discord.Intents.default()
 intents.message_content = True  
@@ -69,4 +76,4 @@ async def on_message(message):
             f.write("\n" +str(y.strftime("%Y-%m-%d %H:%M:%S")) +" unmuted -> who: " + str(member_to_mute.name))
 
 
-bot.run('')
+bot.run(DISCORD_TOKEN)
